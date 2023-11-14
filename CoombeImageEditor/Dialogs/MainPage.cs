@@ -30,10 +30,18 @@ namespace CoombeImageEditor.Dialogs
 
         private void openProjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            
             folderBrowserDialog1.ShowDialog();
 
+            tsLabel.Visible = true;
+            tsLabel.Text = "Loading File...";
+            tsProgress.Maximum = 3;
+            tsProgress.Value = 0;
+            tsProgress.Visible = true;
+
             pd = ps.loadProject(folderBrowserDialog1.SelectedPath);
+
+            tsProgress.Value++;
 
             ActiveForm.Text = "Coombe - " + pd.projectTitle;
 
@@ -42,11 +50,21 @@ namespace CoombeImageEditor.Dialogs
                 navArea.Items.Add(s.Split('\\').Last(), 0);
             }
 
+            tsProgress.Value++;
+
             foreach (string s in System.IO.Directory.GetFiles(pd.projectFolder + "\\fs"))
             {
                 
                 navArea.Items.Add(s.Split('\\').Last(),1);
             }
+
+            tsProgress.Value++;
+
+            tsLabel.Visible = true;
+            tsLabel.Text = "Loading Complete.";
+            tsProgress.Maximum = 100;
+            tsProgress.Value = 0;
+            tsProgress.Visible = false;
         }
     }
 }
