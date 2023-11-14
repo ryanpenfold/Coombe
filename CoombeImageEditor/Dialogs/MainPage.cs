@@ -65,6 +65,63 @@ namespace CoombeImageEditor.Dialogs
             tsProgress.Maximum = 100;
             tsProgress.Value = 0;
             tsProgress.Visible = false;
+
+            projectTitle.Text = pd.projectTitle;
+            switch (pd.projectFormat.ToLower())
+            {
+                case "iso":
+                    pd.projectFormat = "iso";
+                    volumeType.SelectedIndex = 1;
+                    break;
+
+                case "flp":
+                    volumeType.SelectedIndex = 3;
+                    break;
+
+                case "vhd":
+                    volumeType.SelectedIndex = 2;
+                    break;
+
+                default:
+                    volumeType.SelectedIndex = 0;
+                    break;
+            }
+
+        }
+
+        private void volumeType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (volumeType.SelectedText)
+            {
+                case "Disc Image (ISO)":
+                    pd.projectFormat = "iso";
+                    break;
+
+                case "Floppy Image (FLP)":
+                    pd.projectFormat = "flp";
+                    break;
+
+                case "Virtual Hard Disk (VHD)":
+                    pd.projectFormat = "vhd";
+                    break;
+
+                default:
+                    volumeType.SelectedIndex = 0;
+                    break;
+            }
+            Console.WriteLine("Project Format changed to " + pd.projectFormat);
+        }
+
+        private void projectTitle_TextChanged(object sender, EventArgs e)
+        {
+            pd.projectTitle = projectTitle.Text;
+            Console.WriteLine("Updated project title to " + pd.projectTitle);
+            ActiveForm.Text = "Coombe - " + pd.projectTitle;
+        }
+
+        private void saveProjectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ps.createProject(pd, true);
         }
     }
 }

@@ -38,7 +38,7 @@ namespace CoombeImageEditor
         private void generateProjectBtn_Click(object sender, EventArgs e)
         {
             pd.initData(textBox1.Text, metaType.Text, metaName.Text, metaFormat.Text, numericUpDown1.Value, "fs", "");
-            ps.createProject(pd);
+            ps.createProject(pd, false);
         }
 
         private void btnFolder_Click(object sender, EventArgs e)

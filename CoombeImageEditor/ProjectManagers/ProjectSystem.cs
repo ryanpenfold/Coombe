@@ -52,14 +52,13 @@ namespace CoombeImageEditor.ProjectManagers
                 }
             }
             fileStream.Close();
-            MessageBox.Show("Finished Loading...", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
             return pd;
         }
 
-        public bool createProject(ProjectData pd)
+        public bool createProject(ProjectData pd, bool overwrite)
         {
             Console.WriteLine("Attempting to create " + pd.projectFormat + " project in " + pd.projectFolder);
-            if (System.IO.Directory.Exists(pd.projectFolder))
+            if (System.IO.Directory.Exists(pd.projectFolder) && overwrite == false)
             {
                 DialogResult dr = MessageBox.Show("Project folder already exists! Continue generating project?", "Project Folder exists", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
                 if(dr == DialogResult.No) {
@@ -94,7 +93,6 @@ namespace CoombeImageEditor.ProjectManagers
                 writer.WriteEndElement();
             }
             fileStream.Close();
-            MessageBox.Show("Project Generation Successful", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
             return true;
         }
     }

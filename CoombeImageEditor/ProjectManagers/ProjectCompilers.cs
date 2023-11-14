@@ -48,7 +48,7 @@ namespace CoombeImageEditor.ProjectManagers
             {
                 CDReader cd = new CDReader(isoStream, true);
                 pd.initData(outFolder, "iso", cd.VolumeLabel, "", 0, "fs", "");
-                ps.createProject(pd);
+                ps.createProject(pd, false);
                 /* foreach(string s in cd.GetFiles("\\"))
                 {
                     Stream fileStream = cd.OpenFile(s, FileMode.Open);
