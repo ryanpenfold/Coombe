@@ -1,1 +1,1 @@
-# CoombeImageEditor
+# Coombe
