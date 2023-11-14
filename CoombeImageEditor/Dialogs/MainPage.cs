@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -86,7 +87,7 @@ namespace CoombeImageEditor.Dialogs
                     volumeType.SelectedIndex = 0;
                     break;
             }
-
+            updateLayout();
         }
 
         private void volumeType_SelectedIndexChanged(object sender, EventArgs e)
@@ -122,6 +123,29 @@ namespace CoombeImageEditor.Dialogs
         private void saveProjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ps.createProject(pd, true);
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateLayout()
+        {
+            /* if (pd.projectFormat != "vhd")
+            {
+                discSize.Enabled = false;
+                pd.projectFSsize = 700;
+                sizeLeftPrg.Maximum = Convert.ToInt32(pd.projectFSsize);
+                DirectoryInfo dinfo = new DirectoryInfo(pd.projectFolder + "\\" + pd.projectFSroot);
+                sizeleft.Text = "of which " + dinfo.EnumerateFiles().Sum(file => file.Length / 1024 / 1024) + "mb is left.";
+                sizeLeftPrg.Value = Convert.ToInt32(dinfo.EnumerateFiles().Sum(file => file.Length) / 1024 / 1024);
+            } */
+        }
+
+        private void sizeLeftPrg_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

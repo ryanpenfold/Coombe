@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,6 +18,7 @@ namespace CoombeImageEditor.ProjectManagers
         public decimal projectFSsize;               // Size of the FS. 0/Disabled on ISO/Floppy
         public string projectFSroot;                // FS Root for the Project
         public string projectBootRom;               // Direct Address to Boot.ROM
+        
 
         public void initData(string pj, string form, string title, string fstype, decimal size, string fsroot, string bootrom)
         {

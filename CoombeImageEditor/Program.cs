@@ -18,7 +18,7 @@ namespace CoombeImageEditor
             Application.SetCompatibleTextRenderingDefault(false);
             if (args.Length <= 0)
             {
-                Application.Run(new Form1());
+                Application.Run(new Dialogs.MainPage());
             } else
             {
                 if(args.Contains("--test"))
